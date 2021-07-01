@@ -1,0 +1,47 @@
+.grid-wrap{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    gap: 10px;
+}
+
+.options > * {
+    margin-left: 5px;
+}
+
+.options > button {
+    width: auto;
+    border-radius: 8px;
+    background-color: rgb(121, 202, 0);
+    border: none;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.options {
+    /* grid-area: opt; */
+    justify-self: inherit;
+    width: 75%;
+    margin: 8px;
+    background-color: #291a3f;
+    /* grid-column: 1/; */
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 75%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #653379;
+  }
