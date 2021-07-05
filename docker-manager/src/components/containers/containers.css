@@ -1,8 +1,14 @@
 .grid-wrap{
+    /* position: absolute; */
     display: grid;
     justify-items: center;
-    grid-template-columns: 100%;
+    align-items: center;
+    /* grid-template-columns: 100%; */
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
+    /* right: 50%;
+    left: 50%; */
+ 
     gap: 10px;
 }
 
@@ -21,18 +27,20 @@
 }
 
 .options {
+    grid-column: 2/4;
     /* grid-area: opt; */
-    justify-self: inherit;
-    width: 75%;
+    /* justify-self: left; */
+    /* width: 75%; */
     margin: 8px;
     background-color: #291a3f;
     /* grid-column: 1/; */
 }
 
 table {
+    grid-column: 2/4;
     border-collapse: collapse;
     border-spacing: 0;
-    width: 75%;
+    /* width: 75%; */
     border: 1px solid #ddd;
     border-radius: 8px;
 }
@@ -44,4 +52,39 @@ th, td {
   
   tr:nth-child(even) {
     background-color: #653379;
+  }
+
+
+  .alert {
+    justify-self: left;
+    grid-column: 1/1;
+    grid-row: 1/1;
+    display: none;
+    /* width: 10%; */
+    padding: 20px;
+    color: white;
+    opacity: 0.75;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+  
+  .alert.success {background-color: #04AA6D;}
+  .alert.info {background-color: #2196F3;}
+  .alert.warning {background-color: #ff9800;}
+  .alert.danger {background-color: #f44336;;}
+  
+  /* .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  } */
+  
+  .closebtn:hover {
+    color: black;
   }

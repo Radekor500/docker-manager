@@ -1,4 +1,12 @@
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com');
+  src: url('https://fonts.gstatic.com');
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+}
+
 body {
   background-color: #20172d;
   color: white;
+  font-family: 'Roboto', 'sans-serif';;
 }
