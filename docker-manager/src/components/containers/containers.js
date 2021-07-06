@@ -35,6 +35,8 @@ function Containers({containers}) {
 
     let handleOpt = (event) => {
         console.log(event.target.value)
+        let msg = document.querySelector('.grid-wrap');
+       
         for (const container of ops) {
             if (container[1]) {
                 let name = container[0].slice(1)
@@ -45,14 +47,18 @@ function Containers({containers}) {
                 })
                 .then(resp => {
                     if (resp.status === 204) {
-                        let msg = document.querySelector('.alert');
+                       
+                        //alert.classList.add('alert')
+                        // msg.style.display = 'block'
                         let alert = document.createElement('div');
-                        msg.style.display = 'block'
+                        alert.classList.add('alert')
                         if (event.target.value === 'stop') {
-                            alert.classList.add('danger')
+                            //alert.classList.add('alert', 'stop')
+                            alert.style.backgroundColor = '#f44336'
                             
                         } else {
-                            alert.classList.add('success')
+                            //alert.classList.add('alert', 'success')
+                            alert.style.backgroundColor = '#04AA6D'
                         }
                         msg.appendChild(alert)
                         alert.innerHTML = name;
@@ -107,10 +113,7 @@ function Containers({containers}) {
                     <button>Restart</button>
                     <button>Remove</button>
                     <button value='stop' onClick={handleOpt}>Stop</button>
-                </div>
-                <div class="alert">
-                {/* <strong></strong> */}
-                </div>
+                </div>  
                 <table>
                     <tr>
                         <th>Name</th>

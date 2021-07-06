@@ -57,10 +57,7 @@ th, td {
 
   .alert {
     justify-self: left;
-    grid-column: 1/1;
     grid-row: 1/1;
-    display: none;
-    /* width: 10%; */
     padding: 20px;
     color: white;
     opacity: 0.75;
@@ -69,10 +66,10 @@ th, td {
     border-radius: 8px;
   }
   
-  .alert.success {background-color: #04AA6D;}
+  /* .alert.success {background-color: #04AA6D;}
   .alert.info {background-color: #2196F3;}
   .alert.warning {background-color: #ff9800;}
-  .alert.danger {background-color: #f44336;;}
+  .alert.danger {background-color: #f44336;;} */
   
   /* .closebtn {
     margin-left: 15px;
