@@ -1,0 +1,17 @@
+.options2 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
+}
+
+.options2 > button {
+    margin-left: 5px;
+    width: auto;
+    border-radius: 8px;
+    background-color: rgb(121, 202, 0);
+    border: none;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}

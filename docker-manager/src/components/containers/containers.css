@@ -26,6 +26,10 @@
     cursor: pointer;
 }
 
+.images {
+  width: 150vh !important;
+}
+
 .options {
     grid-column: 2/4;
     /* grid-area: opt; */

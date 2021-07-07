@@ -2,21 +2,39 @@ import Containers from "./components/containers/containers";
 import Logo from "./components/logo/logo";
 import Scroll from "./components/Scroll/Scroll"
 import { useEffect, useState } from 'react'
+import Menu from "./components/Menu/menu"
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Images from "./components/containers/images";
+import Options from "./components/Options/options";
+
+
 
 function App() {
   const [containers, setContainers] = useState([]);
+  const [call, setCall] = useState('');
+  const [images, setImages] = useState([]);
+  
   // const [search, setSearch] = useState('');
   const [ops, setOps] = useState(new Map());
 
   useEffect(() => {
-    fetch('http://192.168.0.134:5555/containers/json?all=true', {
-        method: 'get',
-        headers: {'content-type': 'application/json'},
-    })
-    .then(resp => resp.json())
-    .then(data => {
-        setContainers([...data])
-    })
+    if (call) {
+        console.log(call)
+        fetch(`http://192.168.0.134:5555/${call}/json?all=true`, {
+            method: 'get',
+            headers: {'content-type': 'application/json'},
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            if (call === 'containers') {
+                setContainers([...data])
+            } else {
+                setImages([...data]);
+            }
+            
+        })
+    }
+   
     //console.log(containers)
 
 })
@@ -56,6 +74,9 @@ let handleOpt = (event) => {
       
       
   }
+
+
+
   let checkboxes = document.querySelectorAll('.check');
   checkboxes.forEach(elem => elem.checked = false)
 }
@@ -68,12 +89,24 @@ let onCheck = (event) => {
 
 
   return (
-    <div>
-      <Logo></Logo>
-      <Containers onCheck={onCheck} handleOpt={handleOpt} containers={containers}></Containers>
-
+    <Router>
+        <div>
+            <Logo></Logo>
+            <Switch>
+                <Route exact path='/'>
+                    <Menu call={call} setCall={setCall}></Menu>
+                </Route>
+                <Route exact path='/containers'>
+                    <Containers onCheck={onCheck} handleOpt={handleOpt} containers={containers}></Containers>
+                </Route>
+                <Route exact path='/images'>
+                    <Options onCheck={onCheck} handleOpt={handleOpt}></Options>
+                    <Images onCheck={onCheck} handleOpt={handleOpt} images={images}></Images>
+                </Route>
+            </Switch>
+        </div>
+      </Router>
       
-    </div>
   );
 }
 
