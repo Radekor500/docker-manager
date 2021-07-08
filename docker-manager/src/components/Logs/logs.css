@@ -1,0 +1,18 @@
+.logs-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    /* height: 100vh; */
+    align-items: center;
+}
+
+.logs {
+    background-color: black;
+    border: 5px solid green;
+    border-radius: 8px;
+    min-height: 70vh;
+    min-width: 150vh;
+    max-width: auto;
+    max-height: auto;
+}

@@ -1,15 +1,17 @@
 import {useState } from 'react'
 import './containers.css'
-function Containers({containers, handleOpt, onCheck}) {
+import {Link} from 'react-router-dom'
+
+function Containers({containers, handleOpt, onCheck, onLink}) {
     //const [containers, setContainers] = useState([]);
     const [search, setSearch] = useState('');
 
 
+   
+
     let onSearch = (event) => {
         setSearch(event.target.value);
     }
-
-    
 
 
 
@@ -22,7 +24,12 @@ function Containers({containers, handleOpt, onCheck}) {
             filtered.map((container, index) => {
                 return (
                     <tr key={index}>
-                        <td><input onChange={onCheck} className='check' value={container.Names} type='checkbox'></input> {container.Names}</td>
+                        <td>
+                        <input onChange={onCheck} className='check' value={container.Names} type='checkbox'></input>
+                        <Link to='/options'>
+                            <button value={container.Names} onClick={onLink} className='link'>{container.Names}</button>
+                        </Link>
+                        </td>
                         <td>{container.State}</td>
                         <td>{container.Stack}</td>
                         <td>{container.Image}</td>

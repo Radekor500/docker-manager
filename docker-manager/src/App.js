@@ -6,6 +6,7 @@ import Menu from "./components/Menu/menu"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Images from "./components/containers/images";
 import Options from "./components/Options/options";
+import Logs from "./components/Logs/logs";
 
 
 
@@ -13,13 +14,14 @@ function App() {
   const [containers, setContainers] = useState([]);
   const [call, setCall] = useState('');
   const [images, setImages] = useState([]);
-  
+  const [search, setSearch] = useState('');
+  const [inspect, setInspect] = useState('');
   // const [search, setSearch] = useState('');
   const [ops, setOps] = useState(new Map());
 
   useEffect(() => {
     if (call) {
-        console.log(call)
+        // console.log(call)
         fetch(`http://192.168.0.134:5555/${call}/json?all=true`, {
             method: 'get',
             headers: {'content-type': 'application/json'},
@@ -81,12 +83,30 @@ let handleOpt = (event) => {
   checkboxes.forEach(elem => elem.checked = false)
 }
 
+let onLink = (event) => {
+    console.log(event)
+    setInspect(event.target.value)
+    console.log(inspect)
+}
+
 let onCheck = (event) => {
   setOps((prevOps) => 
       prevOps.set(event.target.value, event.target.checked)
   )
 }
+let onSearch = (event) => {
+    setSearch(event.target.value);
+    //console.log(search)
+}
 
+
+
+
+
+// const filteredImages = images.filter(elem => {
+//     console.log(elem.RepoTags[0] === null)
+//     return elem.RepoTags[0].toLowerCase().includes(search.toLowerCase())
+// })
 
   return (
     <Router>
@@ -94,14 +114,20 @@ let onCheck = (event) => {
             <Logo></Logo>
             <Switch>
                 <Route exact path='/'>
-                    <Menu call={call} setCall={setCall}></Menu>
+                    <Menu buttons={['images', 'containers']} call={call} setCall={setCall}></Menu>
                 </Route>
                 <Route exact path='/containers'>
-                    <Containers onCheck={onCheck} handleOpt={handleOpt} containers={containers}></Containers>
+                    <Containers onLink={onLink} onCheck={onCheck} handleOpt={handleOpt} containers={containers}></Containers>
                 </Route>
                 <Route exact path='/images'>
-                    <Options onCheck={onCheck} handleOpt={handleOpt}></Options>
+                    <Options  onSearch={onSearch} onCheck={onCheck} handleOpt={handleOpt}></Options>
                     <Images onCheck={onCheck} handleOpt={handleOpt} images={images}></Images>
+                </Route>
+                <Route exact path='/options'>
+                    <Menu buttons={['logs', 'console', 'stats']} call={call} setCall={setCall}></Menu>
+                </Route>
+                <Route exact path='/logs'>
+                    <Logs></Logs>
                 </Route>
             </Switch>
         </div>

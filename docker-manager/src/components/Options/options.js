@@ -1,9 +1,12 @@
 import './options.css'
 
-function Options({onCheck, handleOpt}) {
+function Options({onCheck, handleOpt, onSearch}) {
+
+    
+
     return (
         <div className='options2'>
-            {/* <input onChange={onSearch} type='text' placeholder='search'></input> */}
+            <input onChange={onSearch} type='text' placeholder='search'></input>
             <button value='start' onClick={handleOpt}>Start</button>
             <button>Kill</button>
             <button>Restart</button>

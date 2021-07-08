@@ -26,6 +26,19 @@
     cursor: pointer;
 }
 
+.link {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 2vh;
+}
+
+.link:hover {
+  color: green;
+
+}
+
 .images {
   width: 150vh !important;
 }

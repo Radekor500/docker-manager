@@ -1,6 +1,6 @@
 function Logo() {
     return (
-        <h1>TEST</h1>
+        <h1>DOCKER MANAGER</h1>
     )
 }
 

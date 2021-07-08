@@ -1,5 +1,7 @@
 import './containers.css'
-function Images({onCheck, handleOpt, images}) {
+function Images({onCheck, handleOpt, images, filtered}) {
+
+    
 
     let renderImages = () => {
         return (
