@@ -60,6 +60,8 @@ table {
     /* width: 75%; */
     border: 1px solid #ddd;
     border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 th, td {

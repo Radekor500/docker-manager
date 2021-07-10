@@ -13,6 +13,8 @@
     border-radius: 8px;
     min-height: 70vh;
     min-width: 150vh;
-    max-width: auto;
-    max-height: auto;
+    max-width: 250vh;
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
 }

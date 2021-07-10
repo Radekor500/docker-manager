@@ -1,8 +1,9 @@
 import './menu.css'
 import {Link} from 'react-router-dom'
 
-function Menu({setCall, buttons}) {
 
+function Menu({setCall, buttons}) {
+    
     let renderButtons = () => {
         return buttons.map(button => {
             return (
@@ -14,16 +15,15 @@ function Menu({setCall, buttons}) {
     }
 
     let onOption = (e) => {
-        setCall(e.target.value);
+        let option = e.target.value
+        if (option === 'containers' || option === 'images') {
+            setCall(option);
+        } 
+        
     }
     return (
         <div className='menu-wrap'>
-        {/* <Link to='/images'>
-            <button value='images' onClick={onOption}>Images</button>
-        </Link>
-        <Link to='/containers'>
-            <button value='containers' onClick={onOption}>Containers</button>
-        </Link> */}
+
         {renderButtons()}
             
         </div>

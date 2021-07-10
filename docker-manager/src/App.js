@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Images from "./components/containers/images";
 import Options from "./components/Options/options";
 import Logs from "./components/Logs/logs";
+import Console from "./components/console/console";
 
 
 
@@ -18,6 +19,7 @@ function App() {
   const [inspect, setInspect] = useState('');
   // const [search, setSearch] = useState('');
   const [ops, setOps] = useState(new Map());
+//   const [option, setOption] = useState('');
 
   useEffect(() => {
     if (call) {
@@ -83,9 +85,22 @@ let handleOpt = (event) => {
   checkboxes.forEach(elem => elem.checked = false)
 }
 
+let getLogs = () => {
+    fetch(`http://192.168.0.134:5555/containers/${inspect}/logs?stdout=true/`, {
+        method: 'get',
+        headers: {'content-type': 'text/html'}
+    })
+    .then(resp => resp.text())
+    .then(data => {
+        let logs = document.querySelector('.logs')
+        logs.innerHTML = data;
+    })
+    
+}
+
 let onLink = (event) => {
     console.log(event)
-    setInspect(event.target.value)
+    setInspect((event.target.value).slice(1))
     console.log(inspect)
 }
 
@@ -127,7 +142,10 @@ let onSearch = (event) => {
                     <Menu buttons={['logs', 'console', 'stats']} call={call} setCall={setCall}></Menu>
                 </Route>
                 <Route exact path='/logs'>
-                    <Logs></Logs>
+                    <Logs getLogs={getLogs}></Logs>
+                </Route>
+                <Route exact path='/console'>
+                    <Console></Console>
                 </Route>
             </Switch>
         </div>
